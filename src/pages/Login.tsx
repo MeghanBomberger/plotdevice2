@@ -35,6 +35,7 @@ export default function Login() {
 
   return (
     <main className="login-wrap">
+
       <img
         className="corner-plant top-left"
         src={cornerPlant1} 
@@ -55,12 +56,28 @@ export default function Login() {
         src={cornerPlant4} 
         alt=""
       />
-      <form className="login-card" onSubmit={handleSubmit}>
+
+      <form 
+        className="login-card" 
+        onSubmit={handleSubmit}
+      >
+
         <div className="login-icon-background">
-          <img className="login-icon" src={typewriter} alt="" />
+          <img 
+            className="login-icon" 
+            src={typewriter} 
+            alt="" 
+          />
         </div>
-        <h1 className="login-logo">PlotDevice</h1>
-        <p className="login-sub">Sign in to your library</p>
+
+        <h1 className="login-logo">
+          PlotDevice
+        </h1>
+
+        <p className="login-sub">
+          Sign in to your library
+        </p>
+
         <label className="login-field">
           Email
           <input
@@ -72,6 +89,7 @@ export default function Login() {
             autoFocus
           />
         </label>
+
         <label className="login-field">
           Password
           <input
@@ -82,15 +100,25 @@ export default function Login() {
             required
           />
         </label>
+
         {error && (
-          <p className="login-error" role="alert">
+          <p 
+            className="login-error" 
+            role="alert"
+          >
             {error}
           </p>
         )}
-        <button className="login-submit" type="submit" disabled={submitting}>
+
+        <button 
+          className="login-submit" 
+          type="submit" 
+          disabled={submitting}
+        >
           {submitting ? "Signing in…" : "Sign in"}
         </button>
       </form>
+
     </main>
   )
 }
