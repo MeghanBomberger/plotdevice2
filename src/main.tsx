@@ -4,8 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import RequireAuth from './components/RequireAuth'
 import App from './App'
-import Home from './pages/Home'
-import About from './pages/About'
+import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import '@fontsource/andika'
@@ -29,8 +28,7 @@ const router = createBrowserRouter([
       </RequireAuth>
     ),
     children: [
-      { index: true, element: <Home /> },
-      { path: 'about', element: <About /> },
+      { index: true, element: <Dashboard /> },
       { path: '*', element: <NotFound /> },
     ],
   },
