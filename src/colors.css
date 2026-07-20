@@ -26,6 +26,10 @@
 
   /* surfaces: lightness steps of the ocean-5 hue, dark -> raised */
   --bg-app: #141d28;
+  /* wash over the body texture image; lower alpha = more texture shows */
+  --texture-veil: rgb(20 29 40 / 0.925);
+  /* wash over content-surface textures (cards/pages), bg-content at high alpha */
+  --texture-veil-content: rgb(27 39 53 / 0.9);
   --bg-content: #1b2735;
   --surface-card: #22303f;
   --surface-hover: #283a4c;
@@ -49,4 +53,9 @@
   --accent-text: #141d28;
   --danger: #cf6f6f;
   --danger-text: #141d28;
+
+  /* vivid purple pulled from the typewriter sticker (its darker warm purple) */
+  --accent-alt: #8313b5;
+  --accent-alt-hover: #9a0e86;
+  --accent-alt-text: #ffffff;
 }

@@ -22,7 +22,12 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg-app);
+  /* night-garden plant texture under a heavy deep-ocean wash; overlay strength lives in --texture-veil */
+  background-color: var(--bg-app);
+  background-image: linear-gradient(var(--texture-veil), var(--texture-veil)),
+    url('./assets/background-plant.webp');
+    background-size: cover;
+  background-attachment: fixed;
   color: var(--text-body);
 }
 
@@ -108,15 +113,23 @@ h3 {
 }
 
 .login-card {
-  background: var(--bg-content);
+  /* crumpled-paper texture under a content-colored wash: the "page" on the garden */
+  background-color: var(--bg-content);
+  background-image: linear-gradient(var(--texture-veil-content), var(--texture-veil-content)),
+    url('./assets/background-crumbled.webp');
+  background-size: 120rem;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 25px;
+  border-bottom-left-radius: 150px;
+  border-bottom-right-radius: 150px;
   padding: 2rem;
+  padding-bottom: 5rem;
   width: 100%;
   max-width: 22rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  filter: drop-shadow(10px 10px 10px var(--accent-text));
 }
 
 .login-card h1 {
@@ -124,17 +137,39 @@ h3 {
   font-size: 1.5rem;
 }
 
+.login-icon-background {
+  background: var(--active-bg);
+  border-radius: 50%;
+  width: 10rem;
+  height: 11rem;
+  margin-top: -7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  align-self: center;
+  box-shadow: 0 0 4px 2px var( --accent-text);
+  filter: drop-shadow(2px 2px 5px var(--accent-text));
+}
+
+.login-icon {
+  width: 10rem;
+  align-self: center;
+  filter: drop-shadow(0.25rem 0.25rem 0.1rem var(--accent-text));
+}
+
 .login-logo {
   font-family: var(--font-logo);
   color: var(--chip-text);
   align-self: center;
+  filter: drop-shadow(10px 10px 10px var(--accent-text));
 }
 
 .login-sub {
-  margin: -2rem 0 0;
-  font-family: var(--font-cursive-soft);
+  margin: -1.95rem 0 0;
+  font-family: var(--font-cursive);
   color: var(--text-muted);
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   align-self: center;
 }
 
@@ -144,6 +179,7 @@ h3 {
   gap: 0.35rem;
   color: var(--text-secondary);
   font-size: 0.9rem;
+  font-family: var(--font-display);
 }
 
 .login-field input {
@@ -152,7 +188,8 @@ h3 {
   border-radius: 8px;
   color: var(--text-primary);
   padding: 0.55rem 0.75rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-family: var(--font-hand);
 }
 
 .login-field input:focus {
@@ -164,24 +201,60 @@ h3 {
   margin: 0;
   color: var(--danger);
   font-size: 0.9rem;
+  align-self: center;
 }
 
 .login-submit {
-  background: var(--accent);
-  color: var(--accent-text);
+  background: var(--accent-alt);
+  color: var(--accent-alt-text);
   border: none;
-  border-radius: 8px;
+  border-radius: 10rem;
   padding: 0.6rem 1rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 .login-submit:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.12);
 }
 
 .login-submit:disabled {
   opacity: 0.6;
   cursor: default;
+}
+
+.corner-plant {
+  position: absolute;
+  width: 40%;
+  filter: drop-shadow(10px 10px 10px var(--accent-text));
+  z-index: 1;
+}
+
+.top-left {
+  top: -8%;
+  left: -5%;
+  rotate: 140deg;
+}
+
+.top-right {
+  width: 45%;
+  top: -8%;
+  right: -7%;
+  rotate: 230deg;
+}
+
+.bottom-left {
+  width: 38%;
+  bottom: -2%;
+  left: -5%;
+  rotate: -10deg;
+}
+
+.bottom-right {
+  width: 38.5%;
+  bottom: -3%;
+  right: -7%;
+  transform: scaleX(-1) rotate(10deg);
 }

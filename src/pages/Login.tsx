@@ -2,6 +2,11 @@ import { useState, type FormEvent } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import { signIn } from "../api/auth"
 import { useAuth } from "../context/AuthContext"
+import typewriter from "../assets/typewriter.svg"
+import cornerPlant1 from "../assets/plant-1.png"
+import cornerPlant2 from "../assets/plant-2.png"
+import cornerPlant3 from "../assets/plant-3.png"
+import cornerPlant4 from "../assets/plant-4.png"
 
 export default function Login() {
   const { session, loading } = useAuth()
@@ -29,7 +34,30 @@ export default function Login() {
 
   return (
     <main className="login-wrap">
+      <img
+        className="corner-plant top-left"
+        src={cornerPlant1} 
+        alt=""
+      />
+      <img
+        className="corner-plant top-right"
+        src={cornerPlant2} 
+        alt=""
+      />
+      <img
+        className="corner-plant bottom-left"
+        src={cornerPlant3} 
+        alt=""
+      />
+      <img
+        className="corner-plant bottom-right"
+        src={cornerPlant4} 
+        alt=""
+      />
       <form className="login-card" onSubmit={handleSubmit}>
+        <div className="login-icon-background">
+          <img className="login-icon" src={typewriter} alt="" />
+        </div>
         <h1 className="login-logo">PlotDevice</h1>
         <p className="login-sub">Sign in to your library</p>
         <label className="login-field">
