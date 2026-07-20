@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "8-turns-dev",
+      "runtimeExecutable": "C:\\Users\\geeke\\.nvm\\versions\\node\\v20.20.1\\bin\\node.exe",
+      "runtimeArgs": ["node_modules/vite/bin/vite.js"],
+      "port": 5173
+    }
+  ]
+}

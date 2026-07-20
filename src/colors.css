@@ -1,0 +1,52 @@
+/*
+ * Theme tokens for 8 Turns.
+ * Raw palette values live in the "ramp" block; everything the app
+ * actually uses is a semantic role token mapped from them.
+ * Components should only ever reference role tokens, so a future
+ * theme is a new [data-theme] block, not a find-and-replace.
+ */
+
+:root {
+  /* ---- deep ocean ramp (teal -> plum) ---- */
+  --ocean-1: #006466;
+  --ocean-2: #065a60;
+  --ocean-3: #0b525b;
+  --ocean-4: #144552;
+  --ocean-5: #1b3a4b;
+  --ocean-6: #212f45;
+  --ocean-7: #272640;
+  --ocean-8: #312244;
+  --ocean-9: #3e1f47;
+  --ocean-10: #4d194d;
+}
+
+:root,
+:root[data-theme='deep-ocean'] {
+  color-scheme: dark;
+
+  /* surfaces: lightness steps of the ocean-5 hue, dark -> raised */
+  --bg-app: #141d28;
+  --bg-content: #1b2735;
+  --surface-card: #22303f;
+  --surface-hover: #283a4c;
+  --border: #2e3f50;
+
+  /* text: tinted off-whites, never pure white */
+  --text-primary: #e8ecee;
+  --text-body: #d5dce0;
+  --text-secondary: #b7c3cb;
+  --text-muted: #8fa3b0;
+
+  /* selection / active states, drawn from the ramp */
+  --active-bg: var(--ocean-5);
+  --active-indicator: var(--ocean-1);
+  --chip-bg: var(--ocean-5);
+  --chip-border: var(--ocean-3);
+  --chip-text: #9fd4d1;
+
+  /* the warm outsiders: the only non-cool colors in the app */
+  --accent: #e0a458;
+  --accent-text: #141d28;
+  --danger: #cf6f6f;
+  --danger-text: #141d28;
+}
