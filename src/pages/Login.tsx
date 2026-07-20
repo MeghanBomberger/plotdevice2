@@ -7,6 +7,7 @@ import cornerPlant1 from "../assets/plant-1.png"
 import cornerPlant2 from "../assets/plant-2.png"
 import cornerPlant3 from "../assets/plant-3.png"
 import cornerPlant4 from "../assets/plant-4.png"
+import "./Login.css"
 
 export default function Login() {
   const { session, loading } = useAuth()

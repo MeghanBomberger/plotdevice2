@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { signOut } from './api/auth'
 import { useAuth } from './context/AuthContext'
+import './App.css'
 
 export default function App() {
   const { session } = useAuth()
