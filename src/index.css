@@ -21,11 +21,17 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  
   /* night-garden plant texture under a heavy deep-ocean wash; overlay strength lives in --texture-veil */
   background-color: var(--bg-app);
   background-image: linear-gradient(var(--texture-veil), var(--texture-veil)),
-    url('./assets/background-plant.webp');
+  url('./assets/background-plant.webp');
   background-size: cover;
   background-attachment: fixed;
   color: var(--text-body);

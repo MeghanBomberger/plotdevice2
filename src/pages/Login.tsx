@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { signIn } from "../api/auth"
 import { useAuth } from "../context/AuthContext"
 import typewriter from "../assets/typewriter.svg"
@@ -11,7 +11,6 @@ import "./Login.css"
 
 export default function Login() {
   const { session, loading } = useAuth()
-  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -19,13 +18,85 @@ export default function Login() {
 
   if (!loading && session) return <Navigate to="/" replace />
 
+  async function runAnimationSequence() {
+    const loginCard = document.querySelector<HTMLElement>(".login-card")
+    const plantTopLeft = document.querySelector<HTMLElement>(".corner-plant.top-left")
+    const plantTopRight = document.querySelector<HTMLElement>(".corner-plant.top-right")
+    const plantBottomLeft = document.querySelector<HTMLElement>(".corner-plant.bottom-left")
+    const plantBottomRight = document.querySelector<HTMLElement>(".corner-plant.bottom-right")
+
+    if (!loginCard) return
+
+    await loginCard.animate(
+      [
+        {
+          width: `${loginCard.offsetWidth}px`,
+          maxWidth: `${loginCard.offsetWidth}px`,
+          height: `${loginCard.offsetHeight}px`,
+        },
+        {
+          width: "calc(100vw - 1rem)",
+          maxWidth: "calc(100vw - 1rem)",
+          height: "calc(100vh - 1rem)",
+          maxHeight: "calc(100vh - 1rem)",
+          borderRadius: "1rem",
+          marginTop: "0px",     
+        },
+      ],
+      {
+        duration: 600,
+        easing: "ease-in-out",
+        fill: "forwards",
+      },
+    ).finished
+
+    if (plantTopLeft && plantTopRight && plantBottomLeft && plantBottomRight) {
+      await Promise.all([
+        plantTopLeft.animate(
+          [
+            { 
+              scale: 1,
+            },
+            { 
+              scale: 0.5,
+            },
+          ],
+          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+        ).finished,
+        plantTopRight.animate(
+          [
+            { scale: 1 },
+            { scale: 0.5 },
+          ],
+          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+        ).finished,
+        plantBottomLeft.animate(
+          [
+            { scale: 1 },
+            { scale: 0.5 },
+          ],
+          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+        ).finished,
+        plantBottomRight.animate(
+          [
+            { scale: 1 },
+            { scale: 0.5 },
+          ],
+          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+        ).finished,
+      ])
+    }
+  }
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
     setSubmitting(true)
     try {
-      await signIn(email, password)
-      navigate("/", { replace: true })
+      await signIn(email, password).then(async () => {
+        await runAnimationSequence() // Call the animation sequence function
+      })
+      // navigate("/", { replace: true })
     } catch (err) {
       setError(err instanceof Error ? err.message : "Sign-in failed")
     } finally {
@@ -38,35 +109,35 @@ export default function Login() {
 
       <img
         className="corner-plant top-left"
-        src={cornerPlant1} 
+        src={cornerPlant1}
         alt=""
       />
       <img
         className="corner-plant top-right"
-        src={cornerPlant2} 
+        src={cornerPlant2}
         alt=""
       />
       <img
         className="corner-plant bottom-left"
-        src={cornerPlant3} 
+        src={cornerPlant3}
         alt=""
       />
       <img
         className="corner-plant bottom-right"
-        src={cornerPlant4} 
+        src={cornerPlant4}
         alt=""
       />
 
-      <form 
-        className="login-card" 
+      <form
+        className="login-card"
         onSubmit={handleSubmit}
       >
 
         <div className="login-icon-background">
-          <img 
-            className="login-icon" 
-            src={typewriter} 
-            alt="" 
+          <img
+            className="login-icon"
+            src={typewriter}
+            alt=""
           />
         </div>
 
@@ -78,7 +149,7 @@ export default function Login() {
           Sign in to your library
         </p>
 
-        <label className="login-field">
+        <label className="login-field" style={{ marginTop: "-0.85rem" }}>
           Email
           <input
             type="email"
@@ -102,17 +173,17 @@ export default function Login() {
         </label>
 
         {error && (
-          <p 
-            className="login-error" 
+          <p
+            className="login-error"
             role="alert"
           >
             {error}
           </p>
         )}
 
-        <button 
-          className="login-submit" 
-          type="submit" 
+        <button
+          className="login-submit"
+          type="submit"
           disabled={submitting}
         >
           {submitting ? "Signing in…" : "Sign in"}
