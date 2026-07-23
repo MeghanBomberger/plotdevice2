@@ -48,7 +48,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   align-self: center;
   box-shadow: 0 0 4px 2px var( --accent-text);
   filter: drop-shadow(2px 2px 5px var(--accent-text));
@@ -60,18 +59,24 @@
   filter: drop-shadow(0.25rem 0.25rem 0.1rem var(--accent-text));
 }
 
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-logo {
   font-family: var(--font-logo);
   color: var(--chip-text);
   align-self: center;
   filter: drop-shadow(10px 10px 10px var(--accent-text));
+  font-size: 2.5rem;
 }
 
 .login-sub {
-  margin: -1.95rem 0 0;
+  margin: -0.9rem 0 -0.5rem 0;
   font-family: var(--font-cursive);
   color: var(--text-muted);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   align-self: center;
 }
 

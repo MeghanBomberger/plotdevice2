@@ -1,9 +1,8 @@
 /* ── app shell: the paper sheet on the garden ── */
 
 .shell {
-  min-height: 100vh;
-  /* the garden matte: gap letting the plant background peek around the paper */
-  padding: clamp(0.75rem, 2.5vw, 2rem);
+  height: 100vh;
+  padding: 0.5rem;
   display: flex;
 }
 
@@ -14,10 +13,10 @@
     url('./assets/background-crumbled.webp');
   background-size: 120rem;
   border: 1px solid var(--border);
-  border-radius: 25px;
+  border-radius: 1rem;
   flex: 1;
   min-width: 0;
-  max-height: calc(100vh - 2 * clamp(0.75rem, 2.5vw, 2rem));
+  max-height: calc(100vh - 1rem);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -26,25 +25,27 @@
 .paper-header {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.85rem 1.5rem;
-  border-bottom: 1px solid var(--border);
+  gap: 0.5rem;
+  padding: 0.3125rem 0.625rem;
   flex-wrap: wrap;
 }
 
 .brand-icon {
   background: var(--active-bg);
   border-radius: 50%;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 2.5rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 0 4px 2px var(--accent-text);
+  filter: drop-shadow(2px 2px 5px var(--accent-text));
 }
 
 .brand-icon img {
-  width: 2.4rem;
+  width: 2.5rem;
+  filter: drop-shadow(0.25rem 0.25rem 0.1rem var(--accent-text));
 }
 
 .brand-text {
@@ -55,14 +56,16 @@
 
 .brand-title {
   font-family: var(--font-logo);
-  font-size: 1.35rem;
+  font-size: 1.125rem;
   color: var(--chip-text);
   line-height: 1.2;
+  filter: drop-shadow(10px 10px 10px var(--accent-text));
 }
 
 .brand-sub {
+  margin: -0.675rem 0 -0.375rem;
   font-family: var(--font-cursive);
-  font-size: 1.05rem;
+  font-size: 0.9375rem;
   color: var(--text-muted);
 }
 
