@@ -27,7 +27,7 @@ export default function Login() {
 
     if (!loginCard) return
 
-    await loginCard.animate(
+    const loginCardAnimation = loginCard.animate(
       [
         {
           width: `${loginCard.offsetWidth}px`,
@@ -52,39 +52,62 @@ export default function Login() {
 
     if (plantTopLeft && plantTopRight && plantBottomLeft && plantBottomRight) {
       await Promise.all([
+        loginCardAnimation,
         plantTopLeft.animate(
           [
             { 
               scale: 1,
+              translate: "0 0",
             },
             { 
-              scale: 0.5,
+              scale: 0.45,
+              translate: "-35vw -35vh",
             },
           ],
-          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+          { duration: 1200, easing: "ease-in-out", fill: "forwards" },
         ).finished,
         plantTopRight.animate(
           [
-            { scale: 1 },
-            { scale: 0.5 },
+            {
+              scale: 1,
+              translate: "0 0",
+            },
+            {
+              scale: 0.45,
+              translate: "35vw -35vh",
+            },
           ],
-          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+          { duration: 1200, easing: "ease-in-out", fill: "forwards" },
         ).finished,
         plantBottomLeft.animate(
           [
-            { scale: 1 },
-            { scale: 0.5 },
+            {
+              scale: 1,
+              translate: "0 0",
+            },
+            {
+              scale: 0.45,
+              translate: "-35vw 35vh",
+            },
           ],
-          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+          { duration: 1200, easing: "ease-in-out", fill: "forwards" },
         ).finished,
         plantBottomRight.animate(
           [
-            { scale: 1 },
-            { scale: 0.5 },
+            {
+              scale: 1,
+              translate: "0 0",
+            },
+            {
+              scale: 0.45,
+              translate: "35vw 35vh",
+            },
           ],
-          { duration: 600, easing: "ease-in-out", fill: "forwards" },
+          { duration: 1200, easing: "ease-in-out", fill: "forwards" },
         ).finished,
       ])
+    } else {
+      await loginCardAnimation
     }
   }
 
